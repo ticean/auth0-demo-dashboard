@@ -78,10 +78,14 @@ function userHasRole(user, role) {
 
 function commonLocals(req) {
   return {
-    userData: JSON.stringify(req.user.profile),
-    isUserAdmin: userHasRole(req.user, 'admin'),
-    displayName: req.user.profile.displayName,
-    picture: req.user.profile.picture || 'https://graph.facebook.com/3/picture',
+    user: {
+      accessToken: req.user.accessToken,
+      idToken: req.user.idToken,
+      profileString: JSON.stringify(req.user.profile, null, ' '),
+      isAdmin: userHasRole(req.user, 'admin'),
+      displayName: req.user.profile.displayName,
+      picture: req.user.profile.picture || 'https://graph.facebook.com/3/picture',
+    },
     menuLinks: {
       sites:  process.env.SCALEWORKS_SITES_URL,
       mail:   process.env.SCALEWORKS_MAIL_URL,

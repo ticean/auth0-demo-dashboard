@@ -1,10 +1,23 @@
 <div class="row page-header">
   <h2>Account</h2>
-  <p>Your raw user data.</p>
 </div>
-<div class="row" id="apps">
+<div class="row" id="access-token">
+  <h3>Access token</h3>
   <pre>
-    <code class="language-javascript">{{userData}}</code>
+    <code class="language-javascript">{{user.accessToken}}</code>
+  </pre>
+</div>
+<div class="row" id="id-token">
+  <h3>ID Token (JWT)</h3>
+  <p>You may inspect this at <a href="http://jwt.io" target="_blank">JWT.io</a></p>
+  <pre>
+    <code class="language-javascript">{{user.idToken}}</code>
+  </pre>
+</div>
+<div class="row" id="profile">
+  <h3>Profile</h3>
+  <pre>
+    <code class="language-javascript">{{user.profileString}}</code>
   </pre>
 </div>
 
