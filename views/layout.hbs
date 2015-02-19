@@ -26,6 +26,9 @@
             <li><a target="_blank" href="{{menuLinks.mail}}">Mail</a></li>
             <li><a target="_blank" href="{{menuLinks.social}}">Social</a></li>
             <li><a target="_blank" href="{{menuLinks.store}}">Store</a></li>
+            {{#if isUserAdmin }}
+              <li><a target="_blank" href="/streams">Streams</a></li>
+            {{/if}}
             <li class="dropdown">
               <a href="#" class="dropdown-toggle profile-image-dropdown" data-toggle="dropdown">
                 <img src="{{picture}}" class="profile-image img-circle"> <span id="name">{{displayName}}<span> <b class="caret"></b>
