@@ -31,7 +31,12 @@ router.get('/streams', ensureAuthenticated, ensureAuthorizedByRole('admin'),
       console.log("Got Streams delegated token: ", idToken);
       getStreams(idToken, {}, function(err, result) {
         console.log("Got Stream results: ", result);
-        locals = _.extend(commonLocals(req), {streamResult: result});
+        var resultJSON = JSON.parse(result);
+        var streamItems = _.map(resultJSON, function(item) {
+          console.log("Parsing result item: ", item);
+          return JSON.parse(item);
+        });
+        locals = _.extend(commonLocals(req), {streamItems: streamItems});
         res.render('streams', locals);
       });
     });
@@ -110,7 +115,7 @@ function getDelegatedToken(params, done) {
 
 function getStreams(idToken, body, done) {
   request.get({
-    url: STREAMS_URL + '/secured/ping',
+    url: STREAMS_URL + '/streams/_global',
     headers: { "Authorization": "Bearer " + idToken }
   }, function (err, resp, body) {
     if(err) return done(err);

@@ -3,5 +3,32 @@
   <p>Stream content is only visible by users with <strong>admin</strong> role.
 </div>
 <div class="row streams-content">
-  <pre>{{streamResult}}</pre>
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Actor.pic</th>
+        <th>Actor.uid</th>
+        <th>Actor.name</th>
+        <th>Verb</th>
+        <th>Object</th>
+        <th>Target</th>
+        <th>Generator.client_id</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each streamItems }}
+      <tr>
+        <td>
+          <img src="{{actor.info.image}}" height="24" width="24" alt="Profile Pic" />
+        </td>
+        <td>{{actor.uid}}</td>
+        <td>{{actor.info.name}}</td>
+        <td><strong>{{verb}}</strong></td>
+        <td>{{object}}</td>
+        <td>{{target}}</td>
+        <td>{{generator.client_id}}</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
 </div>
